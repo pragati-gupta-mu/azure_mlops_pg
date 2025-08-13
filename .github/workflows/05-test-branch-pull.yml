@@ -1,4 +1,5 @@
 #new feature 1
+#new feature 2
 name: Triggered on pull operation in test branch
 
 on:
