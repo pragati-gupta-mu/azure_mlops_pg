@@ -1,0 +1,13 @@
+name: Triggered on pull operation in test branch
+
+on:
+  push:
+    branches: [test]
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      run: |
+        echo "Will add code checks here in next challenge"
