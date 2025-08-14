@@ -43,9 +43,13 @@ def split_data(df):
     # split into train and test sets
     return train_test_split(X, y, test_size=0.2, random_state=42)
 
+
 def train_model(reg_rate, X_train, X_test, y_train, y_test):
     # train model
-    model = LogisticRegression(C=1/reg_rate, solver="liblinear").fit(X_train, y_train)
+    model = LogisticRegression(
+        C=1/reg_rate,
+        solver="liblinear"
+    ).fit(X_train, y_train)
     return model
 
 
@@ -64,6 +68,7 @@ def parse_args():
 
     # return args
     return args
+
 
 # run script
 if __name__ == "__main__":
