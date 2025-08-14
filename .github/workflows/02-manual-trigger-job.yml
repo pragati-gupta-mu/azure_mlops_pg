@@ -2,6 +2,8 @@ name: Manually trigger an Azure Machine Learning job
 
 on:
   workflow_dispatch:
+  pull_request:
+      branches: [main]
 
 jobs:
   linting:
@@ -9,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v3
     - name: Use Python version 3.8
       uses: actions/setup-python@v3
       with:
@@ -26,7 +28,7 @@ jobs:
     needs: [linting]
     steps:
     - name: Check out repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v3
     - name: Use Python version 3.8
       uses: actions/setup-python@v3
       with:
@@ -45,7 +47,7 @@ jobs:
     needs: [unit-test]
     steps:
     - name: Check out repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v3
     - name: Install az ml extension
       run: az extension add -n ml -y
     - name: Azure login
