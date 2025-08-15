@@ -18,6 +18,7 @@ jobs:
     # if: github.event.label.name == 'register-model'
     name: Register Model
     runs-on: ubuntu-latest
+
     environment:
       name: prod
     steps:
@@ -37,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: prod
+    needs: [register-model]
     steps:
       - name: Check out repo
         uses: actions/checkout@main
@@ -56,6 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: prod
+    needs: [create-endpoint]
     steps:
       - name: Check out repo
         uses: actions/checkout@main
