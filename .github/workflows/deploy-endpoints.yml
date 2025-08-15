@@ -47,9 +47,7 @@ jobs:
       - name: "Az CLI login"
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS}}
       - name: Trigger Azure ML job
         run: az ml online-endpoint create -f src/create-endpoint.yml --workspace-name ${{ env.workspace-name }} --resource-group ${{ env.resource-group }}
   deploy-model:
@@ -67,8 +65,6 @@ jobs:
       - name: "Az CLI login"
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS}}
       - name: Trigger Azure ML job
         run:  az ml online-deployment create -f src/deploy-endpoint.yml --all-traffic --workspace-name ${{ env.workspace-name }} --resource-group ${{ env.resource-group }}
